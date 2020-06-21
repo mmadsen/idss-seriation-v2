@@ -142,8 +142,8 @@ bandit...................................................................Passed
  create mode 100644 test/test_dummy.py
 ```
 
-
-
+Your code has not be committed until you see the `files changed` message at the bottom.  Once you see that,
+you can also do a `git push` up to Github.  
 
 ## Branch Policy ##
 

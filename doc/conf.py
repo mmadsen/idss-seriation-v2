@@ -16,7 +16,7 @@ import sys
 import sphinx
 from distutils.version import LooseVersion
 import sphinx_rtd_theme
-from ibis_utilization_algorithms import __version__
+from idss_seriation._version import __version__
 
 version = __version__
 # The full version, including alpha/beta/rc tags.
@@ -76,8 +76,8 @@ plot_gallery = False
 master_doc = "index"
 
 # General information about the project.
-project = "Algorithms for Asset Utilization"
-copyright = "2019, Ibis Networks, Inc.  All rights reserved."
+project = "IDSS Seriation V2"
+copyright = "2020, Carl P. Lipo and Mark E. Madsen.  All rights reserved."
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -228,9 +228,9 @@ latex_elements = {
 latex_documents = [
     (
         "index",
-        "ibis_utilization_algorithms.tex",
-        "Algorithms for Asset Utilization",
-        "Ibis Networks, Inc.",
+        "idss_seriation_v2.tex",
+        "IDSS Seriation V2",
+        "Carl P. Lipo and Mark E. Madsen",
         "manual",
     )
 ]
@@ -263,9 +263,9 @@ latex_documents = [
 man_pages = [
     (
         "index",
-        "ibis_utilization_algorithms",
-        "Algorithms for Asset Utilization",
-        ["Ibis Networks, Inc."],
+        "idss_seriation_v2",
+        "IDSS Seriation V2",
+        ["Carl P. Lipo", "Mark E. Madsen"],
         1,
     )
 ]
@@ -279,17 +279,6 @@ man_pages = [
 # Grouping the document tree into Texinfo files. List of tuples
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
-texinfo_documents = [
-    (
-        "index",
-        "ibis_utilization_algorithms",
-        "Algorithms for Asset Utilization",
-        "Ibis Networks, Inc.",
-        "ibis_utilization_algorithms",
-        "One line description of project.",
-        "Miscellaneous",
-    )
-]
 
 # Documents to append as an appendix to all manuals.
 # texinfo_appendices = []

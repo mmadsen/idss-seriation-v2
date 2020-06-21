@@ -1,0 +1,2 @@
+Seriation Output:  Minmax Graphs
+================================

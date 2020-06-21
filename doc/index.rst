@@ -3,52 +3,39 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Ibis Asset Utilization Algorithm Suite
-======================================
+IDSS Seriation V2
+=================
 
 :Release: |version|
 :Date: |today|
 
-COMPANY CONFIDENTIAL:  This documentation and accompanying code is not for distribution outside Ibis Networks without written permission.
 
 
-Python classes and code for determining asset utilization from time series
-data of electrical consumption.
 
-Algorithm Processing and Configuration
---------------------------------------
+
+General Documentation
+---------------------
 
 .. toctree::
    :maxdepth: 1
 
-   algorithm_processor
-   configuration
-
-Algorithm Components
---------------------
-
-.. toctree::
-   :maxdepth: 1
-
-   datachecks
-   preprocessing
-   algorithm_library
-   postprocessing
+   executables
+   seriation_types
 
 
-Summary Statistics for Utilization Episodes
--------------------------------------------
+Seriation Output
+----------------
 
 .. toctree::
    :maxdepth: 1
 
-   statistics
+   minmax_graphs
+   sumgraphs
 
-
-Utility Code
-------------
+Cloud and Distributed Execution
+-------------------------------
 
 .. toctree::
    :maxdepth: 1
 
-   timeutils
+   aws_ray_cluster

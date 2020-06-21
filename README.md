@@ -5,17 +5,18 @@ Library
 ## Table of Contents ##
 
 <!--ts-->
-   * [Asset Utilization Service](#asset-utilization-service)
+   * [IDSS Seriation Version 2:  Iterative Deterministic Seriation Solutions](#idss-seriation-version-2--iterative-deterministic-seriation-solutions)
       * [Table of Contents](#table-of-contents)
-      * [Note on Executables](#note-on-executables)
+      * [Documentation](#documentation)
       * [Setup for Development](#setup-for-development)
-         * [Makefile Targets to set up development](#makefile-targets-to-set-up-development)
+         * [Setting Up Virtual Environment with Makefile](#setting-up-virtual-environment-with-makefile)
          * [MANUAL set up a development environment](#manual-set-up-a-development-environment)
+      * [Branch Policy](#branch-policy)
       * [Dependency Management](#dependency-management)
       * [Environmental Dependencies:  Other Software Required](#environmental-dependencies--other-software-required)
-         * [Database Setup for Local Development](#database-setup-for-local-development)
+      * [Support Policy](#support-policy)
 
-<!-- Added by: mark, at: Tue Apr 28 10:08:07 PDT 2020 -->
+<!-- Added by: mark, at: Sun Jun 21 12:58:17 PDT 2020 -->
 
 <!--te-->
 
@@ -44,7 +45,7 @@ The following are instructions on setting up for modifying or adding to this rep
 1.  Bandit and Safety for automated code security checks -- mainly to keep from doing really dumb things accidentally.
 1.  Mypy for static typing.  This can be a pain in the ass but is important for building extensible libraries.
 
-**IMPORTANT NOTE**:  All development occurs within a "virtual environment" to isolate dependencies and ensure repeatable tests.  See next two sections.  Also note that this code uses "pre-commit" hooks to prevent 
+**IMPORTANT NOTE**:  All development occurs within a "virtual environment" to isolate dependencies and ensure repeatable tests.  See next two sections.  Also note that this code uses "pre-commit" hooks to prevent
 code from being checked in which:
 
 * Pass all unit tests, period.
@@ -85,7 +86,7 @@ NOTE:  Pytest also runs automatically on the pre-commit hook.  You will NOT be a
 
 By default, the main branch in which development is merged is `development`.  This is the branch you will get if you do a `git clone`
 without any other arguments.  Features and major work should be done in feature branches named `feature/XXXXXX` and then
-merged into development when complete and tested. 
+merged into development when complete and tested.
 
 Full releases designed for public usage will be merged into branch `master` and tagged with version numbers, beginning with 2.0.0.  
 
@@ -106,8 +107,8 @@ All public library dependencies are derived from PyPI, and can be retrieved by `
 
 ## Support Policy ##
 
-This is open-source software, available to the research community for use under the terms of the Apache Public License contained here. 
+This is open-source software, available to the research community for use under the terms of the Apache Public License contained here.
 
 Support is handled through `Issues` on the Github repository, and you are encouraged to open an issue if you have a problem or bug after
-carefully using the documentation to set things up for your use case.  Support for normal usage is not available since the authors both have 
+carefully using the documentation to set things up for your use case.  Support for normal usage is not available since the authors both have
 full time jobs, but we will attempt to answer problems or bugs within a reasonable interval.  We welcome pull requests for enhancements or bug fixes!

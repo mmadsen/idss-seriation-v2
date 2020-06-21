@@ -75,12 +75,75 @@ At the conclusion of the "make" script, you can just do `source venv/asset_utili
 1.  Create a local virtual environment:  `virtualenv <environment directory name>`.  If you use `venv` or `.venv` (on Unix-like systems) as the name, `.gitignore` is already set up to ignore them.  Activate your virtual environment:  `source <name>/bin/activate`.
 1.  Install production dependencies:  `pip install -r requirements.txt`.
 1.  Install development-only dependencies:  `pip install -r requirements-dev.txt`.  This is separate because these packages will not be present in the production Docker container image.
-1.  Install pre-commit hooks:  `pre-commit install`.
+1.  Install pre-commit hooks:  `pre-commit install`.  THIS IS A VERY IMPORTANT STEP - DO NOT SKIP IT!
 1.  Setup local copy of library for testing without having to `python3 setup.py install` every time you change something:  `pip install -e .`
 
 At this point, you should be able to make changes to the code, test with `pytest`, and when you try to commit, the code will be checked, formatted, and unit tests run.  
 
 NOTE:  Pytest also runs automatically on the pre-commit hook.  You will NOT be able to commit and push if unit tests do not pass.
+
+### Committing Code with Pre-Commit Hooks ###
+
+Pre-commit hooks run some checks and formatters before committing to your local Git repository.  It looks like the
+examples below.  The first time you try to commit, you might see an error, or even just the need for the
+formatter to reformat things consistently.  There are small hooks for cleaning whitespace in files, checking JSON or
+YAML for formatting errors, etc.  Any of them can return an issue, as in this example.  
+
+```shell
+(idss-seriation-v2) #>  git add -A .; git commit -m 'updating docs'                                                                                                                                                        (development✱)
+black....................................................................Failed
+hookid: black
+
+Files were modified by this hook. Additional output:
+
+reformatted test/test_dummy.py
+All done! ✨ 🍰 ✨
+1 file reformatted.
+
+mypy.....................................................................Passed
+Check for added large files..............................................Passed
+Check JSON...........................................(no files to check)Skipped
+Check Yaml...........................................(no files to check)Skipped
+Fix End of Files.........................................................Passed
+Trim Trailing Whitespace.................................................Failed
+hookid: trailing-whitespace
+
+Files were modified by this hook. Additional output:
+
+Fixing README.md
+
+Flake8...................................................................Passed
+pytest...................................................................Passed
+safety...............................................(no files to check)Skipped
+bandit...................................................................Passed
+```
+
+When they return an issue, NO CODE HAS BEEN COMMITTED.  You fix whatever is going on -- and try again.
+In this particular example, it was just reformatting, but if a unit test failed, for example,
+you need to fix the code that is causing the test to fail and then you can try again.
+
+When you try again, you need to `git add` files again too, not just retry the commit.
+
+```
+(idss-seriation-v2) #>  git add -A .; git commit -m 'updating docs'                                                                                                                                                        (development✱)
+black....................................................................Passed
+mypy.....................................................................Passed
+Check for added large files..............................................Passed
+Check JSON...........................................(no files to check)Skipped
+Check Yaml...........................................(no files to check)Skipped
+Fix End of Files.........................................................Passed
+Trim Trailing Whitespace.................................................Passed
+Flake8...................................................................Passed
+pytest...................................................................Passed
+safety...............................................(no files to check)Skipped
+bandit...................................................................Passed
+[development cfa851d] updating docs
+ 2 files changed, 13 insertions(+), 10 deletions(-)
+ create mode 100644 test/test_dummy.py
+```
+
+
+
 
 ## Branch Policy ##
 

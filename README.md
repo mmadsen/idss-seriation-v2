@@ -1,6 +1,11 @@
 # IDSS Seriation Version 2:  Iterative Deterministic Seriation Solutions #
 
-Library
+Library and executables which implement the algorithms in:
+
+* https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0124942
+* http://notebook.madsenlab.org/files/madsen2020-dissertation.pdf
+
+for performing various types of deterministic frequency-based seriation.  
 
 ## Table of Contents ##
 

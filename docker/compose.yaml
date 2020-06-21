@@ -1,0 +1,34 @@
+version: "3"
+services:
+  statsd_exporter:
+    image: prom/statsd-exporter
+    ports:
+      - "9102:9102"
+      - "9125:9125"
+      - "9125:9125/udp"
+
+  alertmanager:
+    image: quay.io/prometheus/alertmanager:v0.14.0
+    command:
+      - "--config.file=/etc/alertmanager/config/alertmanager.yaml"
+    volumes:
+      - ../localconfig/alertmanager:/etc/alertmanager/config
+    ports:
+      - "9093:9093"
+
+  asset_utilization_service:
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile.service
+    image: platform/asset-utilization-service
+    depends_on:
+      - statsd_exporter
+      - alertmanager
+    environment:
+      - SERVICE_NAME=asset_utilization_service
+      - DATABASE_URL=postgres://ibisapp:ibisapp@docker.for.mac.host.internal:5432/ibiscloud
+      - CLUSTER_NAME=local
+      - JOB_CONFIGURATION=/etc/asset_utilization_service/job/${JOBCONFIG}
+    volumes:
+      - ../localconfig/job:/etc/asset_utilization_service/job
+      - ../localconfig/algorithm:/etc/asset_utilization_service/algorithm

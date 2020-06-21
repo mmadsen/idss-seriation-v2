@@ -21,6 +21,7 @@ General Documentation
 
    executables
    seriation_types
+   input_formats
 
 
 Seriation Output
